@@ -6,7 +6,6 @@ const options = {
   },
 };
 
-let renderedAlbums = [];
 let songTitles = [];
 
 let uniqueAlbums = document.querySelector(".unique-albums");
@@ -25,6 +24,7 @@ searchButton.addEventListener("click", () => {
     .then((response) => response.json())
     .then((response) => {
       console.log(response);
+      let renderedAlbums = [];
       let dataArray = response.data;
       for (let data of dataArray) {
         container.innerHTML += `
@@ -45,30 +45,28 @@ searchButton.addEventListener("click", () => {
                                   `;
         songTitles.push(data.title);
 
-        // let modalBody = document.querySelector(".modal-body");
-        // let ul = document.createElement("ul");
-        // let newLi = document.createElement("li");
-
-        // for (let songTitle of songTitles) {
-        //   newLi.innerText = songTitle;
-        // }
-        // ul.appendChild(newLi);
-
-        // console.log(ul);
-
-        // modalBody.innerHTML = ul;
-
-        if (renderedAlbums.includes(data.album.title)) {
-          renderedAlbums.splice();
-        } else {
+        if (!renderedAlbums.includes(data.album.title)) {
           renderedAlbums.push(data.album.title);
         }
+        let numberOfUniqueAlbums = renderedAlbums.length;
+        uniqueAlbums.innerText = `We have found ${numberOfUniqueAlbums} unique albums`;
       }
     })
     .catch((err) => console.error(err));
   container.innerHTML = "";
-  console.log(renderedAlbums);
-  let numberOfUniqueAlbums = renderedAlbums.length;
-  uniqueAlbums.innerHTML = `We have found ${numberOfUniqueAlbums} unique albums`;
+
   console.log(songTitles);
 });
+
+// let modalBody = document.querySelector(".modal-body");
+// let ul = document.createElement("ul");
+// let newLi = document.createElement("li");
+
+// for (let songTitle of songTitles) {
+//   newLi.innerText = songTitle;
+// }
+// ul.appendChild(newLi);
+
+// console.log(ul);
+
+// modalBody.innerHTML = ul;
