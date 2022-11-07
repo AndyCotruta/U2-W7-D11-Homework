@@ -1,0 +1,16 @@
+.header-content {
+  margin-left: 1rem;
+}
+
+.card-body {
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 11px;
+  color: #0b395d;
+}
+
+.card-body p {
+  font-size: 0.7rem;
+}
