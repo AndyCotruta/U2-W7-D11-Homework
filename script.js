@@ -58,15 +58,22 @@ searchButton.addEventListener("click", () => {
   console.log(songTitles);
 });
 
-// let modalBody = document.querySelector(".modal-body");
-// let ul = document.createElement("ul");
-// let newLi = document.createElement("li");
+let showSongs = document.querySelector(".show-songs");
+showSongs.addEventListener("click", () => {
+  let modalBody = document.querySelector(".modal-body");
+  let ul = document.createElement("ul");
+  for (let i = 0; i < songTitles.length; i++) {
+    let newLi = document.createElement("li");
+    newLi.innerText = songTitles[i];
+    ul.appendChild(newLi);
+  }
+
+  modalBody.appendChild(ul);
+});
 
 // for (let songTitle of songTitles) {
+//   let newLi = document.createElement("li");
+
 //   newLi.innerText = songTitle;
+//   ul.appendChild(newLi);
 // }
-// ul.appendChild(newLi);
-
-// console.log(ul);
-
-// modalBody.innerHTML = ul;
